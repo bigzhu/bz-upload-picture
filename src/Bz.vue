@@ -5,10 +5,13 @@
 </style>
 
 <template>
-  <div>
+  <div class="ui segment">
+    <div v-show="loading" class="ui active inverted dimmer">
+      <div class="ui text loader">上传图片中</div>
+    </div>
     <input class="hide image input" type="file" @change="previewImg" accept="image/*"/>
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像">
-      <img :src="img_src" id="profile-image" class="ui medium bordered centered image" />
+      <img :src="img_src" id="profile-image" class="ui medium centered image" />
     </a>
   </div>
 </template>
@@ -28,6 +31,7 @@
     },
     data: function () {
       return {
+        loading: false,
         img_input: null,
         pre_img: null
       }
@@ -58,6 +62,7 @@
         return this.uploadImage()
       },
       uploadImage: function () {
+        this.loading = true
         var fd, file
         fd = new window.FormData()
         file = this.img_input[0].files[0]
@@ -78,14 +83,15 @@
                       throw new Error(data.msg)
                     } else {
                       toastr.info('保存成功')
-                      return _this.pre_img.attr('src', data.file_path)
+                      _this.img_src = data.file_path
                     }
                   }
                 }
               )(this),
               error: function (error_info) {
                 this.loading = false
-                throw new Error(error_info)
+                toastr.error(error_info)
+                // throw new Error(error_info)
               }
             }
           )
