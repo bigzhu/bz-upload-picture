@@ -1,1 +1,1 @@
-# bz-demo
+# bz-upload-picture
