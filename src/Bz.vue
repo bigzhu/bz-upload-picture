@@ -24,8 +24,14 @@
       img_src: {
         type: String,
         default: '/static/logo.svg'
+      },
+      call_back: {
+        type: Function
+      },
+      upload_url: {
+        type: String,
+        default: '/api_file_upload'
       }
-
     },
     components: {
     },
@@ -70,7 +76,7 @@
           fd.append('img', file)
           return $.ajax(
             {
-              url: '/api_file_upload',
+              url: this.upload_url,
               type: 'POST',
               data: fd,
               processData: false,
@@ -84,6 +90,9 @@
                     } else {
                       toastr.info('保存成功')
                       _this.img_src = data.file_path
+                      if (_this.call_back) {
+                        _this.call_back(data.file_path)
+                      }
                     }
                   }
                 }

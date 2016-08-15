@@ -9,7 +9,7 @@
       :parms="parms"
       :code="code"
       >
-      <bz></bz>
+      <bz :call_back="call_back"></bz>
     </doc>
   </div>
 </template>
@@ -33,20 +33,20 @@
     data: function () {
       return {
         datas: [1],
-        name: 'bz-bottom-loader',
-        desc: '拉到底部加载',
+        name: 'bz-upload-picture',
+        desc: '上传图片',
         parms: [
-          {parm: 'el', desc: '使用该组件的el,主要为了把查找last限定在本el中. !注意, fragment的el是无法传递进去的'},
-          {parm: 'element_class', desc: '用于定位last的class .hah.jj 的格式'},
-          {parm: 'call_back', desc: '滚到底部的回调函数'}
+          {parm: 'img_src', desc: "还没传时显示的默认图片(可选), 默认 '/static/logo.svg'"},
+          {parm: 'upload_url', desc: "用哪个url来传，默认'/api_file_upload'"},
+          {parm: 'call_back', desc: '完成上传后的回调函数, 上传后的图片地址做为入参'}
         ],
-        parm_desc: `注意，如果使用的组件有路由，那么最好在切换路由的时候发送消息，解除绑定(参看本例子) <code>this.$broadcast('unbind-scroll')</code>`,
+        parm_desc: ``,
         code: `<bz></bz>`
       }
     },
     methods: {
-      call_back: function () {
-        this.datas.push(this.datas.length + 1)
+      call_back: function (file_url) {
+        window.alert(file_url)
       }
     }
   }
