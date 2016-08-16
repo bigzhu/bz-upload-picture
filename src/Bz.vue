@@ -11,7 +11,7 @@
     </div>
     <input class="hide image input" type="file" @change="previewImg" accept="image/*"/>
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像">
-      <img :src="img_src" id="profile-image" class="ui medium centered image" />
+      <img src="./assets/upload-picture.svg" class="ui medium centered image" />
     </a>
   </div>
 </template>
@@ -21,10 +21,6 @@
   import $ from 'jquery'
   export default {
     props: {
-      img_src: {
-        type: String,
-        default: '/static/logo.svg'
-      },
       call_back: {
         type: Function
       },
@@ -89,7 +85,7 @@
                       throw new Error(data.msg)
                     } else {
                       toastr.info('保存成功')
-                      _this.img_src = data.file_path
+                      _this.pre_img.attr('src', data.file_path)
                       if (_this.call_back) {
                         _this.call_back(data.file_path)
                       }

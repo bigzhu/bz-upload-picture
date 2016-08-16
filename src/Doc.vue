@@ -36,7 +36,6 @@
         name: 'bz-upload-picture',
         desc: '上传图片',
         parms: [
-          {parm: 'img_src', desc: "还没传时显示的默认图片(可选), 默认 '/static/logo.svg'"},
           {parm: 'upload_url', desc: "用哪个url来传，默认'/api_file_upload'"},
           {parm: 'call_back', desc: '完成上传后的回调函数, 上传后的图片地址做为入参'}
         ],

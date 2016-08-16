@@ -1,6 +1,6 @@
 module.exports = {
   jQuery: 'jQuery',
-  jquery: 'jquery',
+  jquery: 'jQuery',
   'toastr': 'toastr'
 }
 
