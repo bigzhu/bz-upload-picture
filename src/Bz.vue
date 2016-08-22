@@ -27,6 +27,9 @@
       upload_url: {
         type: String,
         default: '/api_file_upload'
+      },
+      img_src: {
+        type: String
       }
     },
     components: {
@@ -41,6 +44,9 @@
     ready () {
       this.img_input = $(this.$el).find('input')
       this.pre_img = $(this.$el).find('img')
+      if (this.img_src) {
+        this.pre_img.attr('src', this.img_src)
+      }
     },
     methods: {
       changeImg: function () {
