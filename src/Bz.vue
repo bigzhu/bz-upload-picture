@@ -76,6 +76,9 @@
       done_call_back: function (file_path) {
         this.pre_img.attr('src', file_path)
         this.loading = false
+        if (this.call_back) {
+          this.call_back(file_path)
+        }
       }
     },
     computed: {
