@@ -6,10 +6,13 @@
 
 <template>
   <div class="ui segment">
-    <div v-show="loading" class="ui active inverted dimmer">
+    <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
+    <!--
     <input class="hide image input" type="file" @change="previewImg" accept="image/*"/>
+    -->
+    <upload-file class="hide" :upload_url="upload_url" :change_call_back="previewImg" :done_call_back="done_call_back" accept="image/*"></upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像">
       <img src="./assets/upload-picture.svg" class="ui medium centered image" />
     </a>
@@ -17,7 +20,7 @@
 </template>
 
 <script>
-  import toastr from 'toastr'
+  import UploadFile from 'bz-upload-file'
   import $ from 'jquery'
   export default {
     props: {
@@ -33,6 +36,7 @@
       }
     },
     components: {
+      UploadFile
     },
     data: function () {
       return {
@@ -53,6 +57,7 @@
         return this.img_input.click()
       },
       previewImg: function (e) {
+        this.loading = true
         let _this = this
         var file, reader
         file = e.target.files[0]
@@ -64,49 +69,13 @@
         }
         reader = new window.FileReader()
         reader.onload = function (e) {
-          return _this.img_input.attr('src', e.target.result)
+          _this.pre_img.attr('src', e.target.result)
         }
         reader.readAsDataURL(file)
-        return this.uploadImage()
       },
-      uploadImage: function () {
-        this.loading = true
-        var fd, file
-        fd = new window.FormData()
-        file = this.img_input[0].files[0]
-        if (file) {
-          fd.append('img', file)
-          return $.ajax(
-            {
-              url: this.upload_url,
-              type: 'POST',
-              data: fd,
-              processData: false,
-              contentType: false,
-              success: (
-                function (_this) {
-                  return function (data, status, response) {
-                    _this.loading = false
-                    if (!data.success) {
-                      throw new Error(data.msg)
-                    } else {
-                      toastr.info('保存成功')
-                      _this.pre_img.attr('src', data.file_path)
-                      if (_this.call_back) {
-                        _this.call_back(data.file_path)
-                      }
-                    }
-                  }
-                }
-              )(this),
-              error: function (error_info) {
-                this.loading = false
-                toastr.error(error_info)
-                // throw new Error(error_info)
-              }
-            }
-          )
-        }
+      done_call_back: function (file_path) {
+        this.pre_img.attr('src', file_path)
+        this.loading = false
       }
     },
     computed: {

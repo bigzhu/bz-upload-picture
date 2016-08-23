@@ -1,6 +1,7 @@
 module.exports = {
   jQuery: 'jQuery',
   jquery: 'jQuery',
-  'toastr': 'toastr'
+  'toastr': 'toastr',
+  'bz-upload-file': 'bz-upload-file'
 }
 
