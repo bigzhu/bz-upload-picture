@@ -9,7 +9,7 @@
       :parms="parms"
       :code="code"
       >
-      <bz img_src="https://follow.center/api_sp/YUhSMGNITTZMeTl6WTI5dWRHVnVkQzVqWkc1cGJuTjBZV2R5WVcwdVkyOXRMM1ExTVM0eU9EZzFMVEUxTDNNeE1EZ3dlREV3T0RBdlpURTFMekV6TmpjeE1qRXpYek15TWpnME56Z3dNVE00TlRjMk9WOHhNek15T1Rjek1qRmZiaTVxY0djL2FXZGZZMkZqYUdWZmEyVjVQVTFVVFhsTmFrRXlUVlJGTTA1VVZUSk9la0V5VGtSSmVVOUJKVE5FSlRORUxqST0=" :call_back="call_back"></bz>
+      <bz :call_back="call_back"></bz>
     </doc>
   </div>
 </template>
@@ -41,7 +41,7 @@
           {parm: 'img_src', desc: '传入默认显示的图片，一般用于编辑时(可选)'}
         ],
         parm_desc: ``,
-        code: `<bz></bz>`
+        code: `<bz :call_back="call_back"></bz>`
       }
     },
     methods: {

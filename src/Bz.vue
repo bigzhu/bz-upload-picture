@@ -14,12 +14,13 @@
     -->
     <upload-file class="hide" :upload_url="upload_url" :change_call_back="previewImg" :done_call_back="done_call_back" accept="image/*"></upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像">
-      <img src="./assets/upload-picture.svg" class="ui medium centered image" />
+      <img :src="img_src" class="ui medium centered image" />
     </a>
   </div>
 </template>
 
 <script>
+  import upload_picture from './assets/upload-picture.svg'
   import UploadFile from 'bz-upload-file'
   import $ from 'jquery'
   export default {
@@ -32,7 +33,8 @@
         default: '/api_file_upload'
       },
       img_src: {
-        type: String
+        type: String,
+        default: upload_picture
       }
     },
     components: {
@@ -48,9 +50,6 @@
     ready () {
       this.img_input = $(this.$el).find('input')
       this.pre_img = $(this.$el).find('img')
-      if (this.img_src) {
-        this.pre_img.attr('src', this.img_src)
-      }
     },
     methods: {
       changeImg: function () {
