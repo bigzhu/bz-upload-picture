@@ -27,9 +27,6 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "bz-doc": "^2.0.3",
-    "bz-semantic-ui-card": "^2.0.1",
-    "bz-semantic-ui-grid": "^1.0.1",
     "bz-upload-file": "^1.0.2",
     "vue": "latest"
   },
