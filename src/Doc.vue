@@ -1,6 +1,3 @@
-<style lang=less>
-</style>
-
 <template>
   <div>
     <doc :name="name"
@@ -15,8 +12,6 @@
 </template>
 
 <script>
-  import 'bz-semantic-ui-card'
-  import 'bz-semantic-ui-grid'
   import Bz from './Bz'
   import Doc from 'bz-doc'
   export default {
