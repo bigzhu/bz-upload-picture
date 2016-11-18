@@ -1,6 +1,6 @@
 {
   "name": "bz-upload-picture",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "bz-upload-picture",
   "main": "dist/main.js",
   "keywords": [
