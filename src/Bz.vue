@@ -1,9 +1,10 @@
+
 <template>
   <div class="ui segment">
     <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
-    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" style="display: none">上传附件2</upload-file>
+    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件2</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像">
       <img :src="img_src" class="ui medium centered image" />
     </a>
@@ -23,6 +24,10 @@
       img_src: {
         type: String,
         default: upload_picture
+      },
+      change_img: { // 完成上传后，有的还是要显示原先的预览图
+        type: Boolean,
+        default: true
       }
     },
     components: {
@@ -63,7 +68,11 @@
         reader.readAsDataURL(file)
       },
       done_call_back: function (file_path) {
-        this.pre_img.attr('src', file_path)
+        if (this.change_img) {
+          this.pre_img.attr('src', file_path)
+        } else {
+          this.pre_img.attr('src', this.img_src)
+        }
         this.loading = false
         this.$emit('upload_done', file_path)
       }
@@ -72,3 +81,8 @@
     }
   }
 </script>
+<style>
+  .hide {
+      display: none!important;
+  }
+</style>

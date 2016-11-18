@@ -7,6 +7,7 @@
       :code="code"
       >
       <bz @upload_done="call_back"></bz>
+      <bz :change_img="false" @upload_done="call_back"></bz>
     </doc>
   </div>
 </template>
