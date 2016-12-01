@@ -1,8 +1,11 @@
 {
+  "name": "bz-base",
+  "version": "2.0.0",
+  "description": "bz-base",
   "name": "bz-upload-picture",
   "version": "2.1.3",
   "description": "bz-upload-picture",
-  "main": "dist/main.js",
+  "main": "src/Bz.vue",
   "keywords": [
     "vue",
     "component",
@@ -11,19 +14,22 @@
   "author": "bigzhu <vermiliondun@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bigzhu/bz-upload-picture.git"
+    "url": "git+https://github.com/bigzhu/bz-base.git"
   },
   "bugs": {
-    "url": "https://github.com/bigzhu/bz-upload-picture/issues"
+    "url": "https://github.com/bigzhu/bz-base/issues"
   },
-  "homepage": "https://github.com/bigzhu/bz-upload-picture#readme",
+  "homepage": "https://github.com/bigzhu/bz-base#readme",
   "files": [
-    "dist"
+    "src/Bz.vue",
+    "src/assets"
   ],
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/pack.js",
     "test": ""
+  },
+  "dependencies": {
   },
   "dependencies": {},
   "devDependencies": {
