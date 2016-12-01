@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 # bz-base
 
 > bz-base
-=======
 # bz-upload-picture
 
 > bz-upload-picture
->>>>>>> f42767bf8002c028302b29e542baa1aa7d2743a9
 
 ## Build Setup
 
