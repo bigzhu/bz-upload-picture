@@ -1,6 +1,6 @@
-# bz-base
+# bz-upload-picture
 
-> bz-base
+> bz-upload-picture
 
 ## Build Setup
 
