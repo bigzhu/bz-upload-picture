@@ -1,3 +1,8 @@
+<style>
+  .hide{
+    display: none
+  }
+</style>
 
 <template>
   <div class="ui segment">
