@@ -1,9 +1,3 @@
-<style>
-  .hide{
-    display: none
-  }
-</style>
-
 <template>
   <div class="ui segment">
     <div v-show="loading" class="ui large active loader">
@@ -86,6 +80,7 @@
     }
   }
 </script>
+
 <style>
   .hide {
       display: none!important;
