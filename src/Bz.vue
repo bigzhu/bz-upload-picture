@@ -4,9 +4,13 @@
       <div class="ui text loader">上传图片中</div>
     </div>
     <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件2</upload-file>
-    <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像">
-      <img :src="img_src" class="ui medium centered image" />
+    <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像" >
+      <div class="upload position">
+        <img :src="img_src" class="ui medium image" />
+        <a href=""><img class="delete" src="./assets/delete.svg"></a>
+      </div>
     </a>
+    
   </div>
 </template>
 
@@ -83,6 +87,20 @@
 
 <style>
   .hide {
-      display: none!important;
+    display: none!important;
+  }
+  .delete {
+    position: absolute;
+    top: -0.8rem;
+    right: -0.8rem;
+  }
+  .position {
+    position: relative;
+  }
+  .upload {
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 20%;
+    display: inline-block;
   }
 </style>
