@@ -6,8 +6,7 @@
       :parms="parms"
       :code="code"
       >
-      <bz @upload_done="call_back"></bz>
-      <bz :change_img="false" @upload_done="call_back"></bz>
+      <bz v-model="img_src" ></bz>
     </doc>
   </div>
 </template>
@@ -28,6 +27,7 @@
     },
     data: function () {
       return {
+        img_src: '',
         datas: [1],
         name: 'bz-upload-picture',
         desc: '上传图片',
