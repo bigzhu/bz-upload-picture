@@ -6,8 +6,8 @@
     <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件2</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像" >
       <div class="upload position">
-        <img :src="img_src" class="ui medium image" />
-        <a class="delete show-delete" href=""><img src="./assets/delete.svg"></a>
+        <img :src="img_src||upload_picture" class="ui medium image" />
+        <a :class="{'show-delete': img_src}" class="delete " href=""><img src="./assets/delete.svg"></a>
       </div>
     </a>
     
@@ -26,7 +26,7 @@
       },
       img_src: {
         type: String,
-        default: upload_picture
+        default: ''
       },
       change_img: { // 完成上传后，有的还是要显示原先的预览图
         type: Boolean,
@@ -38,6 +38,7 @@
     },
     data: function () {
       return {
+        upload_picture: upload_picture,
         loading: false,
         img_input: null,
         pre_img: null
