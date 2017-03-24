@@ -7,7 +7,7 @@
     <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像" >
       <div class="upload position">
         <img :src="img_src" class="ui medium image" />
-        <a href=""><img class="delete" src="./assets/delete.svg"></a>
+        <a class="delete show-delete" href=""><img src="./assets/delete.svg"></a>
       </div>
     </a>
     
@@ -89,10 +89,18 @@
   .hide {
     display: none!important;
   }
+
+  .upload:hover .show-delete {
+    visibility: visible;
+    opacity: 1;
+  }
   .delete {
     position: absolute;
-    top: -0.8rem;
-    right: -0.8rem;
+    top: -0.5rem;
+    right: -0.5rem;
+    transition: color 0.3s ease;
+    transition: visibility 0s, opacity 0.3s linear;
+    opacity: 0;
   }
   .position {
     position: relative;
