@@ -25,6 +25,8 @@
     "dev": "node build/dev-server.js",
     "test": ""
   },
-  "dependencies": {},
+  "dependencies": {
+    "bz-upload-file": "^2.1.10"
+  },
   "devDependencies": {}
 }

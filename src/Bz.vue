@@ -59,6 +59,7 @@
         var file, reader
         file = e.target.files[0]
         if (!file) {
+          this.loading = false
           return
         }
         if (file.size > (10 * 1024 * 1024)) {
