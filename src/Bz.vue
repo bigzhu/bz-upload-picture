@@ -74,6 +74,7 @@
       done_call_back: function (file_path) {
         this.loading = false
         this.$emit('input', file_path)
+        this.$emit('upload_done', file_path)
       }
     },
     computed: {
