@@ -5,9 +5,7 @@
     </div>
     <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="" >
-      <div class="upload position">
-        <img :src="value||blank_img||default_picture" class="ui medium image" :alt="alt" />
-      </div>
+      <img :src="value||blank_img||default_picture" class="ui medium image" :alt="alt" />
     </a>
 
     <a @click="deleteImg" :class="{'show-delete': value}" class="delete" href="javascript:;"><img src="./assets/delete.svg"></a>
@@ -67,17 +65,17 @@
         // var file, reader
         // file = e.target.files[0]
         // if (!file) {
-        //   this.loading = false
-        //   return
-        // }
-        // if (file.size > (10 * 1024 * 1024)) {
-        //   throw new Error('图片大小只能小于10m哦~')
-        // }
-        // reader = new window.FileReader()
-        // reader.onload = function (e) {
-        //   self.pre_img.attr('src', e.target.result)
-        // }
-        // reader.readAsDataURL(file)
+          //   this.loading = false
+          //   return
+          // }
+          // if (file.size > (10 * 1024 * 1024)) {
+            //   throw new Error('图片大小只能小于10m哦~')
+            // }
+            // reader = new window.FileReader()
+            // reader.onload = function (e) {
+              //   self.pre_img.attr('src', e.target.result)
+              // }
+              // reader.readAsDataURL(file)
       },
       done_call_back: function (src, alt) {
         this.loading = false
@@ -106,14 +104,5 @@
     transition: color 0.3s ease;
     transition: visibility 0s, opacity 0.3s linear;
     opacity: 0;
-  }
-  .position {
-    position: relative;
-  }
-  .upload {
-    margin-left: 40%;
-    margin-right: 40%;
-    width: 20%;
-    display: inline-block;
   }
 </style>
