@@ -3,14 +3,14 @@
     <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
-    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件2</upload-file>
-    <a @click="changeImg" href="javascript:void(0)" data-content="点击更换头像" >
+    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件</upload-file>
+    <a @click="changeImg" href="javascript:void(0)" data-content="" >
       <div class="upload position">
-        <img :src="value||upload_picture" class="ui medium image" />
+        <img :src="value.src||upload_picture" class="ui medium image" :alt="value.alt" />
       </div>
     </a>
 
-    <a @click="deleteImg" :class="{'show-delete': value}" class="delete" href="javascript:;"><img src="./assets/delete.svg"></a>
+    <a @click="deleteImg" :class="{'show-delete': value.src}" class="delete" href="javascript:;"><img src="./assets/delete.svg"></a>
   </div>
 </template>
 
@@ -25,8 +25,8 @@
         default: '/api_file_upload'
       },
       value: {
-        type: String,
-        default: ''
+        type: Object,
+        default: function () { return {} }
       }
     },
     components: {
@@ -48,7 +48,7 @@
     },
     methods: {
       deleteImg: function () {
-        this.$emit('input', '')
+        this.$emit('input', {})
       },
       changeImg: function () {
         return this.img_input.click()
@@ -71,10 +71,12 @@
         }
         reader.readAsDataURL(file)
       },
-      done_call_back: function (file_path) {
+      done_call_back: function (file_path, file_name) {
         this.loading = false
-        this.$emit('input', file_path)
-        this.$emit('upload_done', file_path)
+        this.value.src = file_path
+        this.value.alt = file_name
+        this.$emit('input', this.value)
+        this.$emit('upload_done', this.value)
       }
     },
     computed: {

@@ -6,7 +6,7 @@
       :parms="parms"
       :code="code"
       >
-      <bz v-model="img_src" ></bz>
+      <bz v-model="img" ></bz>
     </doc>
   </div>
 </template>
@@ -27,12 +27,13 @@
     },
     data: function () {
       return {
-        img_src: '',
+        img: {},
         datas: [1],
         name: 'bz-upload-picture',
         desc: '上传图片',
         parms: [
-          {parm: 'event:upload_done', desc: '完成上传后的事件, 上传后的图片地址做为参数'},
+          {parm: 'bind:object', desc: 'src, alt'},
+          {parm: 'event:upload_done(object)', desc: '完成上传后的事件'},
           {parm: 'upload_url', desc: "用哪个url来传，默认'/api_file_upload'(可选)"},
           {parm: 'img_src', desc: '传入默认显示的图片，一般用于编辑时(可选)'}
         ],
