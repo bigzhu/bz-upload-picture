@@ -1,5 +1,5 @@
 <template>
-  <div class="ui segment upload-img">
+  <div class="ui basic segment upload-img">
     <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
