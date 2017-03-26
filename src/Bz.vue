@@ -6,11 +6,11 @@
     <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="" >
       <div class="upload position">
-        <img :src="value.src||upload_picture" class="ui medium image" :alt="value.alt" />
+        <img :src="value||blank_img||default_picture" class="ui medium image" :alt="alt" />
       </div>
     </a>
 
-    <a @click="deleteImg" :class="{'show-delete': value.src}" class="delete" href="javascript:;"><img src="./assets/delete.svg"></a>
+    <a @click="deleteImg" :class="{'show-delete': value}" class="delete" href="javascript:;"><img src="./assets/delete.svg"></a>
   </div>
 </template>
 
@@ -25,8 +25,16 @@
         default: '/api_file_upload'
       },
       value: {
-        type: Object,
-        default: function () { return {} }
+        type: String,
+        default: ''
+      },
+      alt: {
+        type: String,
+        default: ''
+      },
+      blank_img: {
+        type: String,
+        default: ''
       }
     },
     components: {
@@ -34,7 +42,7 @@
     },
     data: function () {
       return {
-        upload_picture: upload_picture,
+        default_picture: upload_picture,
         loading: false,
         img_input: null,
         pre_img: null
@@ -73,10 +81,8 @@
       },
       done_call_back: function (file_path, file_name) {
         this.loading = false
-        this.value.src = file_path
-        this.value.alt = file_name
-        this.$emit('input', this.value)
-        this.$emit('upload_done', this.value)
+        this.$emit('input', file_path)
+        this.$emit('upload_done', file_path, file_name)
       }
     },
     computed: {
