@@ -56,33 +56,33 @@
     },
     methods: {
       deleteImg: function () {
-        this.$emit('input', {})
+        this.$emit('input', '')
       },
       changeImg: function () {
         return this.img_input.click()
       },
       previewImg: function (e) {
         this.loading = true
-        let self = this
-        var file, reader
-        file = e.target.files[0]
-        if (!file) {
-          this.loading = false
-          return
-        }
-        if (file.size > (10 * 1024 * 1024)) {
-          throw new Error('图片大小只能小于10m哦~')
-        }
-        reader = new window.FileReader()
-        reader.onload = function (e) {
-          self.pre_img.attr('src', e.target.result)
-        }
-        reader.readAsDataURL(file)
+        // let self = this
+        // var file, reader
+        // file = e.target.files[0]
+        // if (!file) {
+        //   this.loading = false
+        //   return
+        // }
+        // if (file.size > (10 * 1024 * 1024)) {
+        //   throw new Error('图片大小只能小于10m哦~')
+        // }
+        // reader = new window.FileReader()
+        // reader.onload = function (e) {
+        //   self.pre_img.attr('src', e.target.result)
+        // }
+        // reader.readAsDataURL(file)
       },
-      done_call_back: function (file_path, file_name) {
+      done_call_back: function (src, alt) {
         this.loading = false
-        this.$emit('input', file_path)
-        this.$emit('upload_done', file_path, file_name)
+        this.$emit('input', src)
+        this.$emit('upload_done', src, alt)
       }
     },
     computed: {
