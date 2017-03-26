@@ -1,6 +1,6 @@
 {
   "name": "bz-upload-picture",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "bz-upload-picture",
   "main": "src/Bz.vue",
   "keywords": [
