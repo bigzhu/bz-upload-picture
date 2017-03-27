@@ -60,7 +60,10 @@
         return this.img_input.click()
       },
       previewImg: function (e) {
-        this.loading = true
+        let file = e.target.files[0]
+        if (file) {
+          this.loading = true
+        }
         // let self = this
         // var file, reader
         // file = e.target.files[0]
