@@ -26,6 +26,7 @@
     "test": ""
   },
   "dependencies": {
+    "bz-image-popup": "^2.0.2",
     "bz-upload-file": "^2.1.10"
   },
   "devDependencies": {}

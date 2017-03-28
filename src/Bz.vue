@@ -9,10 +9,12 @@
     </a>
 
     <a @click="deleteImg" :class="{'show-delete': value}" class="delete" href="javascript:;"><img src="./assets/delete.svg"></a>
+    <BzImagePopup v-model="pop_img"></BzImagePopup>
   </div>
 </template>
 
 <script>
+  import BzImagePopup from 'bz-image-popup'
   import upload_picture from './assets/upload-picture.svg'
   import UploadFile from 'bz-upload-file'
   import $ from 'jquery'
@@ -36,10 +38,12 @@
       }
     },
     components: {
+      BzImagePopup,
       UploadFile
     },
     data: function () {
       return {
+        pop_img: '',
         default_picture: upload_picture,
         loading: false,
         img_input: null,
@@ -57,7 +61,11 @@
         this.$emit('input', '')
       },
       changeImg: function () {
-        return this.img_input.click()
+        if (this.value) {
+          this.pop_img = this.value
+        } else {
+          this.img_input.click()
+        }
       },
       previewImg: function (e) {
         let file = e.target.files[0]
