@@ -3,7 +3,7 @@
     <div v-show="loading" class="ui large active loader">
       <div class="ui text loader">上传图片中</div>
     </div>
-    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/*" @upload_done="done_call_back" class="hide">上传附件</upload-file>
+    <upload-file :upload_url="upload_url" @change_file="previewImg" accept="image/png, image/jpeg, image/gif" @upload_done="done" class="hide">上传附件</upload-file>
     <a @click="changeImg" href="javascript:void(0)" data-content="" >
       <img :src="value||blank_img||default_picture" class="ui medium image" :alt="alt" />
     </a>
@@ -88,7 +88,7 @@
               // }
               // reader.readAsDataURL(file)
       },
-      done_call_back: function (src, alt) {
+      done: function (src, alt) {
         this.loading = false
         this.$emit('input', src)
         this.$emit('upload_done', src, alt)
